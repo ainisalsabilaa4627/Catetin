@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Buat Akun - Catetin</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="center-page">
+        <div class="login-container">
+            <h1>Buat Akun</h1>
+            <form onsubmit="return daftarAkun()">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <input type="password" id="confirm" placeholder="Konfirmasi Password" required>
+
+                <button type="submit" class="btn-mulai">Daftar</button>
+            </form>
+        </div>
+
+    <script>
+        function daftarAkun() {
+            const username = document.getElementById("username").value.toLowerCase();
+            const password = document.getElementById("password").value;
+            const confirm  = document.getElementById("confirm").value;
+
+            if (password !== confirm) {
+                alert("Password dan konfirmasi password tidak sama!");
+                return false;
+            }
+
+            localStorage.setItem(username, password);
+
+            alert("Akun berhasil dibuat! Silakan masuk.");
+            window.location.href = "masuk.html";
+            return false;
+        }
+    </script>
+</body>
+</html>

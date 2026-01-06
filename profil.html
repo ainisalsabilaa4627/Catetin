@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Profil - Catetin</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
+        <div class="logo-wrapper">
+            <img src="img/logo1.png" alt="Logo 1" class="logobar">
+            <img src="img/logo2.png" alt="Logo 2" class="logobar2">
+        </div>
+    </header>
+
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="beranda.html" onclick="closeMenu()">Beranda</a></li>
+            <li><a href="profil.html" onclick="closeMenu()">Profil</a></li>
+            <li><a href="transaksi.html" onclick="closeMenu()">Transaksi</a></li>
+            <li><a href="login.html" onclick="closeMenu()">Login / Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="page-wrapper">
+        <div class="shape">
+            <h1>Profil Aplikasi</h1>
+            <img src="img/logo.png" alt="Logo Aplikasi" class="logo">
+            <p class="deskripsi">
+                <b>Catetin</b> adalah aplikasi web sederhana yang dirancang untuk
+                membantu pengguna dalam mencatat pemasukan dan pengeluaran
+                secara praktis, rapi, dan terstruktur.
+            </p>
+
+            <h3>Tujuan Aplikasi</h3>
+            <p class="deskripsi">
+                Aplikasi ini bertujuan untuk memudahkan pengguna dalam
+                mengelola keuangan harian, sehingga pengguna dapat
+                mengetahui kondisi keuangan secara lebih jelas.
+            </p>
+
+            <h3>Fitur Utama</h3>
+            <ul class="langkah">
+                <li>Login dan pembuatan akun pengguna</li>
+                <li>Pencatatan pemasukan dan pengeluaran</li>
+                <li>Pengelompokan transaksi berdasarkan kategori</li>
+                <li>Menampilkan daftar transaksi</li>
+            </ul>
+
+            <h3>Manfaat</h3>
+            <p class="deskripsi">
+                Dengan Catetin, pengguna dapat lebih disiplin dalam
+                mencatat keuangan dan membuat keputusan finansial
+                yang lebih baik.
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy 2026 Catetin | By Aini Salsabila - 251011700978 | Project UAS
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("overlay");
+
+            sidebar.classList.toggle("active");
+            overlay.classList.toggle("active");
+        }
+
+        function closeMenu() {
+            document.getElementById("sidebar").classList.remove("active");
+            document.getElementById("overlay").classList.remove("active");
+        }
+    </script>
+</body>
+</html>

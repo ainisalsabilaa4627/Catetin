@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Daftar Transaksi - Catetin</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
+
+        <div class="logo-wrapper">
+            <img src="img/logo1.png" alt="Logo 1" class="logobar">
+            <img src="img/logo2.png" alt="Logo 2" class="logobar2">
+        </div>
+    </header>
+
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="beranda.html" onclick="closeMenu()">Beranda</a></li>
+            <li><a href="profil.html" onclick="closeMenu()">Profil</a></li>
+            <li><a href="transaksi.html" onclick="closeMenu()">Transaksi</a></li>
+            <li><a href="login.html" onclick="closeMenu()">Login / Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="page-wrapper2">
+        <div class="shapedaftar">
+        <h1>Rekapan Transaksi</h1>
+        <table border="1" cellpadding="10" cellspacing="0" width="80%">
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Jenis</th>
+                    <th>Kategori</th>
+                    <th>Nama</th>
+                    <th>Jumlah</th>
+                    <th>Metode</th>
+                    <th>Ket</th>
+                </tr>
+            </thead>
+            <tbody id="tabelTransaksi"></tbody>
+        </table>
+        <br>
+        <div class="ringkasan">
+            <p>Total Pemasukan: 
+                <br><strong id="totalMasuk">Rp 0</strong></p>
+            <p>Total Pengeluaran: 
+                <br><strong id="totalKeluar">Rp 0</strong></p>
+        </div>
+        <div class="ringkasan2">
+            Sisa Money Kamu:
+            <strong id="sisaSaldo">Rp. 0</strong>
+        </div>
+        <br>
+        <a href="transaksi.html" class="btn-mulai">Tambah Transaksi Lagi</a>
+        <br><br>
+        <button id="resetBtn" class="btn-mulai">Hapus Semua Transaksi</button>
+        <img src="img/logo.png" alt="Logo Aplikasi" class="logolast">
+        </div>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("overlay");
+
+            sidebar.classList.toggle("active");
+            overlay.classList.toggle("active");
+        }
+
+        function closeMenu() {
+            document.getElementById("sidebar").classList.remove("active");
+            document.getElementById("overlay").classList.remove("active");
+        }
+
+        let data = JSON.parse(localStorage.getItem("transaksi")) || [];
+        let tabel = document.getElementById("tabelTransaksi");
+
+        let totalMasuk = 0;
+        let totalKeluar = 0;
+
+        data.forEach(t => {
+            let jumlah = parseInt(t.jumlah);
+            let jumlahFormat = jumlah.toLocaleString("id-ID");
+
+            let row = document.createElement("tr");
+            row.innerHTML = `
+            <td>${t.tanggal}</td>
+            <td>${t.jenis}</td>
+            <td>${t.kategori}</td>
+            <td>${t.nama}</td>
+            <td>Rp. ${parseInt(t.jumlah).toLocaleString("id-ID")}</td>
+            <td>${t.metode}</td>
+            <td>${t.keterangan || "-"}</td>
+        `;
+
+
+        tabel.appendChild(row);
+
+        if (t.jenis === "Pemasukan") {
+            totalMasuk += jumlah;
+        } else if (t.jenis === "Pengeluaran") {
+            totalKeluar += jumlah;
+        }
+        });
+
+        document.getElementById("totalMasuk").innerText =
+            "Rp. " + totalMasuk.toLocaleString("id-ID");
+
+        document.getElementById("totalKeluar").innerText =
+            "Rp. " + totalKeluar.toLocaleString("id-ID");
+
+        let saldo = totalMasuk - totalKeluar;
+
+        document.getElementById("sisaSaldo").innerText =
+            "Rp. " + saldo.toLocaleString("id-ID");
+
+
+        document.getElementById("resetBtn").addEventListener("click", function () {
+        if (confirm("Yakin mau hapus semua transaksi?")) {
+            localStorage.removeItem("transaksi");
+
+            tabel.innerHTML = "";
+            document.getElementById("totalMasuk").innerText = "Rp. 0";
+            document.getElementById("totalKeluar").innerText = "Rp. 0";
+            document.getElementById("sisaSaldo").innerText = "Rp. 0";
+
+            alert("Semua transaksi berhasil dihapus!");
+        }
+        });
+    </script>
+
+    <footer class="footer">
+        &copy 2026 Catetin | By Aini Salsabila - 251011700978 | Project UAS
+    </footer>
+</body>
+</html>

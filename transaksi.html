@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Transaksi - Catetin</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
+
+        <div class="logo-wrapper">
+            <img src="img/logo1.png" alt="Logo 1" class="logobar">
+            <img src="img/logo2.png" alt="Logo 2" class="logobar2">
+        </div>
+    </header>
+
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="beranda.html" onclick="closeMenu()">Beranda</a></li>
+            <li><a href="profil.html" onclick="closeMenu()">Profil</a></li>
+            <li><a href="transaksi.html" onclick="closeMenu()">Transaksi</a></li>
+            <li><a href="login.html" onclick="closeMenu()">Login / Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="page-wrapper">
+        <div class="shape">
+            <h1>Masukkan Transaksi</h1>
+
+            <form id="formTransaksi">
+            <input type="date" class="input" id="tanggal" placeholder="Tanggal" required><br>
+            <select id="jenis" class="input" placeholder="Jenis" required>
+                <option value="">Jenis</option>
+                <option value="Pemasukan">Pemasukan</option>
+                <option value="Pengeluaran">Pengeluaran</option></select>
+            <select id="kategori" class="input" required>
+                <option value="">Kategori</option>
+            </select>
+            <input type="text" class="input" id="nama" placeholder="Nama" required><br>
+            <input type="number" class="input" id="jumlah" placeholder="Jumlah" required><br>
+            <select id="metode" class="input" placeholder="Metode Pembayaran" required>
+                <option value="">Metode Pembayaran</option>
+                <option value="Cash">Cash</option>
+                <option value="QRIS">QRIS</option>
+                <option value="Bank Transfer">Bank Transfer</option>
+                <option value="Debit">Debit</option>
+                <option value="Kartu Kredit">Kartu Kredit</option>
+                <option value="GoPay">GoPay</option>
+                <option value="OVO">OVO</option>
+                <option value="DANA">DANA</option>
+                <option value="ShopeePay">ShopeePay</option>
+                <option value="LinkAja">LinkAja</option>
+                <option value="PayLater">PayLater</option>
+                <option value="Lainnya">Lainnya</option></select><br>
+            <input type="text" class="input" id="keterangan" placeholder="Keterangan (Isi - Jika Kosong)" required>
+            <br><br>
+            <button type="submit" class="btn-mulai">Simpan!</button>
+        </form>
+
+            <br><center><hr size=5 color="orange" width="40%"></center><br>
+            <a href="daftartransaksi.html" class="btn-mulai">Lihat Daftar Transaksi</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy 2026 Catetin | By Aini Salsabila - 251011700978 | Project UAS
+    </footer>
+
+    <script>
+        function toggleMenu() {
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+
+        sidebar.classList.toggle("active");
+        overlay.classList.toggle("active");
+        }
+
+        function closeMenu() {
+            document.getElementById("sidebar").classList.remove("active");
+            document.getElementById("overlay").classList.remove("active");
+        }
+        
+        const jenisSelect = document.getElementById("jenis");
+        const kategoriSelect = document.getElementById("kategori");
+
+        jenisSelect.addEventListener("change", function () {
+           kategoriSelect.innerHTML = '<option value="">Kategori</option>';
+
+            if (this.value === "Pemasukan") {
+                kategoriSelect.innerHTML += `
+                    <option value="Gaji">Gaji</option>
+                    <option value="Uang Bulanan">Uang Bulanan</option>
+                    <option value="Bonus">Bonus</option>
+                    <option value="Usaha">Usaha</option>
+                    <option value="Hadiah">Hadiah</option>
+                    <option value="Lainnya">Lainnya</option>
+
+            `;
+            } else if (this.value === "Pengeluaran") {
+            kategoriSelect.innerHTML += `
+                <option value="Makanan">Makanan</option>
+                <option value="Minuman">Minuman</option>
+                <option value="Transport">Transport</option>
+                <option value="Pulsa / Internet">Pulsa / Internet</option>
+                <option value="Belanja">Belanja</option>
+                <option value="Hiburan">Hiburan</option>
+                <option value="Pendidikan">Pendidikan</option>
+                <option value="Kesehatan">Kesehatan</option>
+                <option value="Lainnya">Lainnya</option>
+            `;
+            }
+        });
+
+        document.getElementById("formTransaksi").addEventListener("submit", function(e){
+            e.preventDefault();
+
+            let transaksi = JSON.parse(localStorage.getItem("transaksi")) || [];
+
+            transaksi.push({
+            tanggal: document.getElementById("tanggal").value,
+            jenis: document.getElementById("jenis").value,
+            kategori: document.getElementById("kategori").value,
+            nama: document.getElementById("nama").value,
+            jumlah: document.getElementById("jumlah").value,
+            metode: document.getElementById("metode").value,
+            keterangan: document.getElementById("keterangan").value
+        });
+
+        localStorage.setItem("transaksi", JSON.stringify(transaksi));
+        alert("Transaksi berhasil disimpan");
+
+        this.reset();
+        });
+    </script>
+</body>
+</html>

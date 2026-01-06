@@ -1,0 +1,502 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.center-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background: linear-gradient(to bottom, #f8e27f, #fffcce);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    background: linear-gradient(to bottom, #f8e27f, #fffcce);
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 60px;
+    padding-top: 80px;
+    padding-bottom: 40px;
+    padding: 50px 10px;
+    background: linear-gradient(to bottom, #f8e27f, #fffcce);
+}
+
+.page-wrapper2 {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 60px;
+    padding-top: 80px;
+    padding-bottom: 40px;
+    padding: 50px 10px;
+    background: linear-gradient(to bottom, #f8e27f, #fffcce);
+}
+
+main.content {
+    flex: 1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 20px;
+    position: relative;
+    z-index: 1002;
+    background-color: #ffa551;
+}
+
+.menu-btn {
+    font-weight: 600;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+}
+
+.logoawal {
+    height: 40px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 200px;
+    height: 100%;
+    padding-top: 80px;
+    transition: left 0.35s ease;
+    z-index: 1001;
+    background-color: #fdbb08;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease;
+    z-index: 1000;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.center-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    width: 100%;
+    margin-top: 60px;
+    padding-top: 80px;
+    padding: 40px 20px;
+    background: linear-gradient(to bottom, #f8e27f, #fffcce);
+}
+
+.shape {
+    text-align: center;
+    max-width: 500px;
+    background: white;
+    padding: 50px 60px;
+    margin: auto;
+    box-sizing: border-box;
+    overflow-x: auto;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.shapedaftar {
+    text-align: center;
+    max-width: 900px;
+    background: white;
+    padding: 35px;
+    margin: auto;
+    box-sizing: border-box;
+    overflow-x: auto;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.shape h1 {
+    margin-bottom: 20px;
+}
+
+.shape h2 {
+    margin-top: -20px;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-mulai {
+    display: inline-block;
+    padding: 12px 40px;
+    background: #fdbb08;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 18px;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-mulai:active {
+    transform: scale(0.97);
+}
+
+.btn-mulai:hover {
+    background: #ffe279;
+}
+
+.login-container {
+    background: white;
+    padding: 50px 30px;
+    border-radius: 25px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.login-container h1 {
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 28px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+}
+
+.login-container input:focus {
+    border-color: #fdbb08;
+}
+
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.header h2 {
+    color: #fdbb08;
+}
+
+.header nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.content h1 {
+    margin-bottom: 20px;
+}
+
+.deskripsi {
+    margin-top: 5px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-size: 1rem;
+}
+
+.langkah {
+    width: 90%;
+    margin: 0 auto 20px;
+    text-align: left;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.footer {
+    width: 100%;
+    background: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 10px;
+    box-shadow: 0 -3px 6px rgba(0,0,0,0.08);
+}
+
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.logobar {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.logobar2 {
+    width: 100px;
+}
+
+.logo3 {
+    width: 150px;
+    margin-top: -30px;
+    margin-bottom: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; 
+    margin-bottom: 10px;
+    border-radius: 50px;
+    font-size: 1rem;
+}
+
+.logolast {
+    width: 100px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ringkasan {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0 30px;
+    background: #fff3c4;
+    padding: 15px 90px;
+    border-radius: 15px;
+    font-size: 8px;
+    font-size: 0.7rem;
+    margin-bottom: 15px;
+}
+
+.ringkasan2 {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0 30px;
+    background: #fff3c4;
+    padding: 15px 160px;
+    border-radius: 15px;
+    font-size: 18px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    font-size: 13px;
+}
+
+th, td {
+    padding: 10px 12px;
+    text-align: center;
+    border: 1px solid #444;
+}
+
+thead th {
+    background-color: #fff3b0;
+    font-weight: 600;
+}
+
+tbody tr {
+    height: 30px;
+}
+
+html {
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 1.6rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+main.content {
+    flex: 1;
+}
+
+.shape-table {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    .page-wrapper{
+        margin-top: auto;
+    }
+    
+    .page-wrapper2{
+        padding: 20px 10px;
+    }
+
+    body {
+        align-items: flex-start;
+    }
+
+    .ringkasan {
+        gap: 5px;
+        padding: 10px 15px;
+        font-size: 0.1rem;
+        text-align: center;
+    }
+
+    .ringkasan2 {
+        gap: 5px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .shape {
+        width: 90%;
+        margin: 60px auto 5px;
+        padding: 20px;
+    }
+
+    .shapedaftar {
+        width: 90%;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .content {
+        margin: auto;
+        padding-top: 60px;
+        padding: 20px 15px;
+    }
+    
+    .ringkasan p {
+        font-size: 0.8rem;
+    }
+
+    .header {
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    .logo-wrapper {
+        justify-content: center;
+    }
+
+    .langkah {
+        width: 85%;
+    }
+
+    h1 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .btn-mulai {
+        width: 100%;
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    table {
+        font-size: 0.4rem;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Beranda - Catetin</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+    
+<body>
+    <header class="header">
+        <div class="menu-btn" onclick="toggleMenu()">
+            ☰ Menu
+        </div>
+
+        <div class="logo-wrapper">
+            <img src="img/logo1.png" alt="Logo 1" class="logobar">
+            <img src="img/logo2.png" alt="Logo 2" class="logobar2">
+        </div>
+    </header>
+
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="beranda.html" onclick="closeMenu()">Beranda</a></li>
+            <li><a href="profil.html" onclick="closeMenu()">Profil</a></li>
+            <li><a href="transaksi.html" onclick="closeMenu()">Transaksi</a></li>
+            <li><a href="login.html" onclick="closeMenu()">Login / Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="page-wrapper">
+        <div class="shape">
+            <h1>Halo! Selamat Datang di</h1>
+                <br><img src="img/logo.png" alt="Logo" class="logo3">
+                
+                <center><hr size=5 color="orange" width="50%"></center><br>
+
+            <p class="deskripsi"> Catetin adalah aplikasi web sederhana yang digunakan untuk mencatat pemasukan dan pengeluaran secara praktis dan terstruktur.</p>
+
+            <h3>Langkah - Langkah Input Transaksi :</h3>
+            <ol class="langkah">
+                <li>Klik menu lalu pilih transaksi</li>
+                <li>Input tanggal sesuai dengan transaksi kamu</li>
+                <li>Pilih jenis (Pemasukan atau Pengeluaran)</li>
+                <li>Pilih kategori yang sesuai</li>
+                <li>Ketik nama transaksi kamu</li>
+                <li>Masukkan jumlah (Jangan gunakan titik)</li>
+                <li>Pilih metode pembayaran</li>
+                <li>Masukan keterangan transaksi</li>
+                <li>Selesai! Kamu bisa melihat daftar transaksi yang berisi total pemasukan & pengeluaran serta sisa uang kamu ^^</li>
+            </ol>
+                <h3>Selamat mencobaaa!</h3>
+            <br>
+            <a href="transaksi.html" class="btn-mulai">Mulai Catat Transaksi</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy 2026 Catetin | By Aini Salsabila - 251011700978 | Project UAS
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("overlay");
+
+            sidebar.classList.toggle("active");
+            overlay.classList.toggle("active");
+        }
+
+        function closeMenu() {
+            document.getElementById("sidebar").classList.remove("active");
+            document.getElementById("overlay").classList.remove("active");
+        }
+    </script>
+</body>
+</html>

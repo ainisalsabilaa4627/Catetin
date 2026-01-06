@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Masuk - Catetin</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="center-page">
+        <div class="login-container">
+            <h1>Masuk</h1>
+
+            <form onsubmit="return cekLogin()">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+
+                <button type="submit" class="btn-mulai">Lanjut</button>
+            </form>
+    </div>
+
+    <script>
+        function cekLogin() {
+            const username = document.getElementById("username").value.toLowerCase();
+            const password = document.getElementById("password").value;
+
+            if (localStorage.getItem(username) === null) {
+                alert("Username belum terdaftar, silakan buat akun.");
+                window.location.href = "buatakun.html";
+                return false;
+            }
+
+            if (localStorage.getItem(username) !== password) {
+                alert("Password salah, silakan coba lagi.");
+                document.getElementById("password").value = "";
+                document.getElementById("password").focus();
+                return false;
+            }
+
+            window.location.href = "beranda.html";
+            return false;
+        }
+    </script>
+</body>
+</html>
